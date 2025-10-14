@@ -44,11 +44,31 @@ AOS.init({
     once: true,
 });
 
-// Form submission handling (demo)
+// Form submission handling with Formspree
 document.getElementById('contact-form').addEventListener('submit', function(e) {
     e.preventDefault();
-    alert('Message sent! (This is a demo. Add a backend like Formspree for real functionality.)');
-    this.reset();
+    
+    const form = this;
+    const formData = new FormData(form);
+    
+    fetch("https://formspree.io/f/meorpdog", {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Message sent successfully!');
+            form.reset();
+        } else {
+            alert('Error sending message. Please try again.');
+        }
+    })
+    .catch(error => {
+        alert('Error sending message: ' + error.message);
+    });
 });
 
 // Smooth scrolling for navigation links
