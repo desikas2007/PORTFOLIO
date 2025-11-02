@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -53,7 +54,7 @@ nav ul li a:hover {
     color: #00aaff;
 }
 
-/* Hero Section with Particle Background and Profile Photo */
+/* Hero Section */
 .hero {
     position: relative;
     height: 100vh;
@@ -126,10 +127,11 @@ nav ul li a:hover {
 }
 
 /* Sections */
+
 .section {
     max-width: 1200px;
-    margin: 4rem auto;
-    padding: 0 2rem;
+    margin: 0 auto 2rem;
+    padding: 2rem;
     text-align: center;
 }
 
@@ -139,7 +141,12 @@ nav ul li a:hover {
     color: #1a1a2e;
 }
 
-/* About Section */
+/* Remove gap on non-home pages */
+body:not(.has-hero) .section:first-of-type {
+    margin-top: 1rem;
+}
+
+/* About */
 .about-content {
     max-width: 700px;
     margin: 0 auto;
@@ -150,7 +157,7 @@ nav ul li a:hover {
     margin-bottom: 1rem;
 }
 
-/* Projects Section */
+/* Projects */
 .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -181,7 +188,7 @@ nav ul li a:hover {
     margin-bottom: 1.5rem;
 }
 
-/* Contact Section */
+/* Contact */
 #contact form {
     display: flex;
     flex-direction: column;
@@ -237,22 +244,17 @@ footer {
     font-size: 0.9rem;
 }
 
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 768px) {
-    .hero h2 {
-        font-size: 2rem;
-    }
-    .hero p {
-        font-size: 1rem;
-    }
-    .profile-photo {
-        width: 120px;
-        height: 120px;
-    }
-    nav ul {
-        gap: 1rem;
-    }
-    nav h1 {
-        font-size: 1.5rem;
-    }
+    .hero h2 { font-size: 2rem; }
+    .hero p { font-size: 1rem; }
+    .profile-photo { width: 120px; height: 120px; }
+    nav ul { gap: 1rem; }
+    nav h1 { font-size: 1.5rem; }
 }
+
+/* -------------------------------------------------
+   FIX: Hide empty hero on non-home pages
+   ------------------------------------------------- */
+.hero:empty { display: none; }
+
